@@ -32,3 +32,6 @@ Route::prefix('admin')->name('admin')->group(function () {
 
     Route::get('posts', [PostController::class, 'index'])->name('.posts.index');
 });
+
+Route::resource('posts', PostController::class);
+Route::get('posts/{post}', [PostController::class, 'show'])->name('posts.show');

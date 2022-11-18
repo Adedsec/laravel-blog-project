@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,11 +20,25 @@ class Post extends Model
 
     public function author()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function categories()
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    protected function smallBody(): Attribute
+    {
+
+        return Attribute::make(
+            get: fn($value) => substr(trim($this->body), 100, 80) . "  ..."
+        );
+
+    }
+
+    public function hasThumbnail()
+    {
+        return false;
     }
 }
