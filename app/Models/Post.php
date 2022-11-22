@@ -28,6 +28,11 @@ class Post extends Model
         return $this->belongsToMany(Category::class);
     }
 
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
     protected function smallBody(): Attribute
     {
 
