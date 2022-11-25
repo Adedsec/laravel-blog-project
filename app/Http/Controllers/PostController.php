@@ -25,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.posts.create');
     }
 
     /**
@@ -36,7 +36,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -82,5 +82,10 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function addComment(Request $request, Post $post)
+    {
+        dd($request->all());
     }
 }

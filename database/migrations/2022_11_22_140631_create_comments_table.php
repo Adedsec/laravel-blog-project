@@ -15,9 +15,10 @@ return new class extends Migration {
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->text('text', '255');
             $table->unsignedBigInteger('commentable_id');
             $table->string('commentable_type');
-            $table->unsignedBigInteger('replied_to');
+            $table->unsignedBigInteger('replied_to')->nullable();
             $table->timestamps();
 
             $table->foreign('replied_to')

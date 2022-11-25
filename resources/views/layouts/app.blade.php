@@ -19,7 +19,7 @@
 <body class="font-sans antialiased" {{ \Illuminate\Support\Facades\App::isLocale('fa') ? "dir = rtl " : "" }}>
 <x-jet-banner/>
 
-<div class="min-h-screen bg-gray-100">
+<div class="min-h-screen bg-gray-50">
     @livewire('navigation-menu')
 
     <!-- Page Heading -->
@@ -29,9 +29,9 @@
                 {{ $header }}
             </div>
         </header>
-@endif
+    @endif
 
-<!-- Page Content -->
+    <!-- Page Content -->
     <main>
         {{ $slot }}
     </main>
