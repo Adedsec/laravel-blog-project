@@ -3,13 +3,10 @@
         <thead class="text-lg text-gray-700 uppercase bg-gray-50">
         <tr>
             <th scope="col" class="py-3 px-6">
-                عنوان
+                {{__('Name')}}
             </th>
             <th scope="col" class="py-3  px-6">
-                متن
-            </th>
-            <th scope="col" class="py-3 px-6">
-                نویسنده
+                {{__('Slug')}}
             </th>
             <th class="py-3 px-6">
                 عملیات
@@ -18,20 +15,17 @@
         </thead>
         <tbody>
 
-        @foreach ($posts as $post)
+        @foreach ($categories as $category)
             <tr class="bg-white">
                 <td scope="row"
                     class="py-4 px-6  font-medium text-gray-900 whitespace-nowrap ">
-                    <a href="{{ route('posts.show',$post->id) }}">
+                    <a href="">
 
-                        {{ $post->title }}
+                        {{ $category->name }}
                     </a>
                 </td>
                 <td class="py-4 px-6">
-                    {{ $post->small_body }}
-                </td>
-                <td class="py-4 px-6">
-                    {{ $post->author->name }}
+                    {{ $category->slug }}
                 </td>
                 <td class="py-4 px-6">
                     <div class="flex">

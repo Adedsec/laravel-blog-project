@@ -6,23 +6,23 @@
                 <li class="">
                     <a href=""
                        class=" block p-2 border-0
+                        {{ Route::currentRouteName() == 'admin.setting' ? 'bg-blue-500 text-white cursor-default ' : 'bg-gray-200 hover:bg-blue-500 hover:text-white' }}">
+                        {{__('Home')}}
+                    </a>
+                </li>
+                <li class="">
+                    <a href="{{route('admin.posts.index')}}"
+                       class=" block p-2 border-0
                         {{ Route::currentRouteName() == 'admin.posts.index' ? 'bg-blue-500 text-white cursor-default ' : 'bg-gray-200 hover:bg-blue-500 hover:text-white' }}">
-                        {{__('Post List')}}
+                        {{__('Posts Management')}}
                     </a>
                 </li>
 
                 <li class="">
-                    <a href=""
+                    <a href="{{route('admin.categories.index')}}"
                        class=" block p-2 border-0
                         {{ Route::currentRouteName() == 'admin.setting' ? 'bg-blue-500 text-white cursor-default ' : 'bg-gray-200 hover:bg-blue-500 hover:text-white' }}">
-                        {{__('Setting')}}
-                    </a>
-                </li>
-                <li class="">
-                    <a href=""
-                       class=" block p-2 border-0
-                        {{ Route::currentRouteName() == 'admin.setting' ? 'bg-blue-500 text-white cursor-default ' : 'bg-gray-200 hover:bg-blue-500 hover:text-white' }}">
-                        {{__('Setting')}}
+                        {{__('Categories Management')}}
                     </a>
                 </li>
                 <li class="">
