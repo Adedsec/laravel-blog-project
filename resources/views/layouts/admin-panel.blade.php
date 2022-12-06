@@ -25,49 +25,6 @@
                         {{__('Categories Management')}}
                     </a>
                 </li>
-                <li class="">
-                    <a href=""
-                       class=" block p-2 border-0
-                        {{ Route::currentRouteName() == 'admin.setting' ? 'bg-blue-500 text-white cursor-default ' : 'bg-gray-200 hover:bg-blue-500 hover:text-white' }}">
-                        {{__('Setting')}}
-                    </a>
-                </li>
-                <li class="">
-                    <a href=""
-                       class=" block p-2 border-0
-                        {{ Route::currentRouteName() == 'admin.setting' ? 'bg-blue-500 text-white cursor-default ' : 'bg-gray-200 hover:bg-blue-500 hover:text-white' }}">
-                        {{__('Setting')}}
-                    </a>
-                </li>
-                <li class="">
-                    <a href=""
-                       class=" block p-2 border-0
-                        {{ Route::currentRouteName() == 'admin.setting' ? 'bg-blue-500 text-white cursor-default ' : 'bg-gray-200 hover:bg-blue-500 hover:text-white' }}">
-                        {{__('Setting')}}
-                    </a>
-                </li>
-                <li class="">
-                    <a href=""
-                       class=" block p-2 border-0
-                        {{ Route::currentRouteName() == 'admin.setting' ? 'bg-blue-500 text-white cursor-default ' : 'bg-gray-200 hover:bg-blue-500 hover:text-white' }}">
-                        {{__('Setting')}}
-                    </a>
-                </li>
-                <li class="">
-                    <a href=""
-                       class=" block p-2 border-0
-                        {{ Route::currentRouteName() == 'admin.setting' ? 'bg-blue-500 text-white cursor-default ' : 'bg-gray-200 hover:bg-blue-500 hover:text-white' }}">
-                        {{__('Setting')}}
-                    </a>
-                </li>
-                <li class="">
-                    <a href=""
-                       class=" block p-2 border-0
-                        {{ Route::currentRouteName() == 'admin.setting' ? 'bg-blue-500 text-white cursor-default ' : 'bg-gray-200 hover:bg-blue-500 hover:text-white' }}">
-                        {{__('Setting')}}
-                    </a>
-                </li>
-
             </ul>
         </div>
         <div class="w-5/6">

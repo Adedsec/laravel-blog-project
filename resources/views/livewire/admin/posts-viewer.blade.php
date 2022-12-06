@@ -37,11 +37,11 @@
                     <div class="flex">
 
                         <a href=""
-                           class="py-1 mx-1 px-2 hover:bg-red-500 border-2 hover:border-red-700 rounded hover:text-white bg-red-200 text-red-800 border-red-400">
+                           class="py-1 mx-1 px-2 bg-white border border-red-500 text-red-500 rounded hover:text-white hover:bg-red-500">
                             delete
                         </a>
                         <a href=""
-                           class="py-1 mx-1 px-2 hover:bg-blue-500 border-2 hover:border-blue-700 rounded hover:text-white bg-white text-red bg-blue-200 text-blue-800 border-blue-400">
+                           class="py-1 mx-1 px-2 bg-white border border-blue-500 text-blue-500 rounded hover:text-white hover:bg-blue-500">
                             edit
                         </a>
                     </div>

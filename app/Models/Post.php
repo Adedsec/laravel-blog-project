@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 class Post extends Model
 {
@@ -45,5 +46,10 @@ class Post extends Model
     public function hasThumbnail()
     {
         return false;
+    }
+
+    public function publishDate(): string
+    {
+        return Carbon::parse($this->created_at)->toFormattedDayDateString();
     }
 }

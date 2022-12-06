@@ -16,9 +16,8 @@
         <div class="mt-4">
 
             <a href="{{route('admin.posts.create')}}"
-               class="rounded p-1  hover:bg-green-600 hover:text-white border-2 hover:border-green-700 border-green-400 bg-green-200 text-gray-500">
-                ایجاد
-                پست
+               class="rounded p-1  hover:border-green-500 border-green-500 bg-white text-green-500 hover:bg-green-500 hover:text-white border ">
+                {{__("Create :resource",['resource'=> __('Post')])}}
             </a>
         </div>
     </div>
