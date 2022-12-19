@@ -2,7 +2,7 @@
 
     <div class="container mx-auto px-[150px] mt-6 text-xl">
         <div class="">
-            <p class="text-base md:text-sm text-green-500 font-bold">&lt;
+            <p class="text-base md:text-sm text-green-500 font-bold"> &lt;
                 <a href="#"
                    class="text-base text-md md:text-sm text-green-500 font-bold no-underline hover:underline">{{__('Back To Blog')}}</a>
             </p>
@@ -11,10 +11,16 @@
             </h1>
             <p class="text-sm md:text-base font-normal text-gray-600">{{$post->publishDate()}}</p>
             <p class="text-sm md:text-base font-normal text-gray-600">{{$post->author->name}}</p>
+
+            <div>
+                @foreach($post->categories as $cat)
+                    <span class="text-sm bg-gray-200  rounded px-1">{{$cat->name}}</span>
+                @endforeach
+            </div>
         </div>
 
         @if($post->hasThumbnail())
-            <img src="" alt="">
+            <img src="{{ $post->getThumbnailPath()}}" class="max-w-3xl mx-auto" alt="">
         @endif
         <p class="py-6 mt-2 leading-loose text-justify">
 

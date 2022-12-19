@@ -2,21 +2,34 @@
 
 @section('content')
     <div class="mx-4 bg-gray-100 border-2 border-gray-200 rounded p-2 ">
-        <form action="{{route('admin.posts.store')}}" method="post" class="flex flex-col">
+        <form action="{{route('admin.posts.store')}}" method="post" enctype="multipart/form-data" class="flex flex-col">
             @csrf
 
             <div class="flex flex-col flex-1 w-1/2  m-2">
                 <label for="title" class="mb-2">{{__('Title')}} : </label>
-                <input type="text" name="title" id="title" class="w-full h-10 rounded border-2 border-blue-300"
+                <input type="text" name="title" id="title" value="{{old('title')}}"
+                       class="w-full h-10 rounded border-2 border-blue-300 {{$errors->has('title')? 'border-red-200' :'' }}"
                        placeholder="{{__('Title')}}">
+                @if($errors->has('title'))
+                    @foreach($errors->get('title') as $err)
+                        <p class="text-red-400 text-sm">{{$err}}</p>
+                    @endforeach
+                @endif
             </div>
 
 
             <div class=" mx-2">
                 <label for="body" class="mb-4">{{__('Text')}} : </label>
                 <textarea name="body" id="body" rows="15"
-                          class="w-full mt-2 rounded border-2 border-blue-300 text-sm">
+                          class="w-full mt-2 rounded border-2 border-blue-300 text-sm {{$errors->has('title')? 'border-red-200' :'' }}">
+
+                    {{old('body')}}
                 </textarea>
+                @if($errors->has('body'))
+                    @foreach($errors->get('body') as $err)
+                        <p class="text-red-400 text-sm">{{$err}}</p>
+                    @endforeach
+                @endif
             </div>
 
             <div class=" m-2">
@@ -40,7 +53,11 @@
                     </label>
                 </div>
 
-
+                @if($errors->has('thumbnail'))
+                    @foreach($errors->get('thumbnail') as $err)
+                        <p class="text-red-400 text-sm">{{$err}}</p>
+                    @endforeach
+                @endif
             </div>
 
             <div class="m-2 flex flex-row justify-items-center">
@@ -56,6 +73,12 @@
                         </option>
                     @endforeach
                 </select>
+
+                @if($errors->has('title'))
+                    @foreach($errors->get('categories') as $err)
+                        <p class="text-red-400 text-sm">{{$err}}</p>
+                    @endforeach
+                @endif
             </div>
 
 

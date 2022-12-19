@@ -16,5 +16,5 @@ interface AttachmentInterface
 
     public function addAttachment(User $user, string $name, string $type, string $size, File $file): string;
 
-    public function deleteAttachments(Attachment $attachment): string;
+    public function deleteAttachment(Attachment $attachment): string;
 }

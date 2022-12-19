@@ -22,7 +22,7 @@
             <tr class="bg-white">
                 <td scope="row"
                     class="py-4 px-6  font-medium text-gray-900 whitespace-nowrap ">
-                    <a href="{{ route('posts.show',$post->id) }}">
+                    <a href="{{ route('posts.show',$post) }}">
 
                         {{ $post->title }}
                     </a>

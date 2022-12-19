@@ -4,10 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Services\Attachment\StorageManager;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
+
+    private StorageManager $storageManager;
+
+    public function __construct(StorageManager $storageManager)
+    {
+
+        $this->storageManager = $storageManager;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -34,11 +46,33 @@ class PostController extends Controller
      * Store a newly created resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Http\Response|\Illuminate\Routing\Redirector
      */
     public function store(Request $request)
     {
-        dd($request->all());
+
+        //dd($request->all());
+        $this->validateForm($request);
+        $post = $this->createPost($request);
+        $post->categories()->attach($request->get('categories'));
+        $post->thumbnail_path = $this->attachThumbnail($post, $request);
+        $post->save();
+        return redirect(route('admin.posts.index'));
+    }
+
+    private function createPost(Request $request): Post
+    {
+        return Auth::user()->posts()->create([
+            'title' => $request->get('title'),
+            'body' => $request->get('body')
+        ]);
+    }
+
+    private function attachThumbnail(Post $post, Request $request)
+    {
+        if ($request->has('thumbnail')) {
+            return $post->addThumbnail($this->storageManager, $request->file('thumbnail'));
+        }
     }
 
     /**
@@ -90,4 +124,15 @@ class PostController extends Controller
     {
         dd($request->all());
     }
+
+    private function validateForm(Request $request)
+    {
+        $request->validate([
+            'title' => ['required', 'string', 'max:256'],
+            'body' => ['required', 'string', 'required', 'max:65535'],
+            'thumbnail' => ['nullable', 'mimes:jpg,bmp,png,jpeg', 'max:10240'],
+            'categories' => ['nullable', 'array', Rule::in(Category::all()->modelKeys())]
+        ]);
+    }
+
 }
