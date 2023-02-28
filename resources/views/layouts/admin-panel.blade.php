@@ -5,24 +5,31 @@
             <ul class="w-full divide-y divide-white h-full border rounded overflow-hidden">
                 <li class="">
                     <a href=""
-                       class=" block p-2 border-0
+                        class=" block p-2 border-0
                         {{ Route::currentRouteName() == 'admin.setting' ? 'bg-blue-500 text-white cursor-default ' : 'bg-gray-200 hover:bg-blue-500 hover:text-white' }}">
-                        {{__('Home')}}
+                        {{ __('Home') }}
                     </a>
                 </li>
                 <li class="">
-                    <a href="{{route('admin.posts.index')}}"
-                       class=" block p-2 border-0
+                    <a href="{{ route('admin.posts.index') }}"
+                        class=" block p-2 border-0
                         {{ Route::currentRouteName() == 'admin.posts.index' ? 'bg-blue-500 text-white cursor-default ' : 'bg-gray-200 hover:bg-blue-500 hover:text-white' }}">
-                        {{__('Posts Management')}}
+                        {{ __('Posts') }}
                     </a>
                 </li>
 
                 <li class="">
-                    <a href="{{route('admin.categories.index')}}"
-                       class=" block p-2 border-0
-                        {{ Route::currentRouteName() == 'admin.setting' ? 'bg-blue-500 text-white cursor-default ' : 'bg-gray-200 hover:bg-blue-500 hover:text-white' }}">
-                        {{__('Categories Management')}}
+                    <a href="{{ route('admin.categories.index') }}"
+                        class=" block p-2 border-0
+                        {{ Route::currentRouteName() == 'admin.categories.index' ? 'bg-blue-500 text-white cursor-default ' : 'bg-gray-200 hover:bg-blue-500 hover:text-white' }}">
+                        {{ __('Categories') }}
+                    </a>
+                </li>
+                <li class="">
+                    <a href="{{ route('admin.comments.index') }}"
+                        class=" block p-2 border-0
+                        {{ Route::currentRouteName() == 'admin.comments.index' ? 'bg-blue-500 text-white cursor-default ' : 'bg-gray-200 hover:bg-blue-500 hover:text-white' }}">
+                        {{ __('Comments Management') }}
                     </a>
                 </li>
             </ul>

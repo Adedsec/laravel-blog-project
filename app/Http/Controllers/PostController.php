@@ -18,6 +18,7 @@ class PostController extends Controller
     {
 
         $this->storageManager = $storageManager;
+        $this->middleware('auth');
     }
 
     /**
@@ -60,6 +61,16 @@ class PostController extends Controller
         return redirect(route('admin.posts.index'));
     }
 
+    private function validateForm(Request $request)
+    {
+        $request->validate([
+            'title' => ['required', 'string', 'max:256'],
+            'body' => ['required', 'string', 'required', 'max:65535'],
+            'thumbnail' => ['nullable', 'mimes:jpg,bmp,png,jpeg', 'max:10240'],
+            'categories' => ['nullable', 'array', Rule::in(Category::all()->modelKeys())]
+        ]);
+    }
+
     private function createPost(Request $request): Post
     {
         return Auth::user()->posts()->create([
@@ -75,6 +86,7 @@ class PostController extends Controller
         }
     }
 
+
     /**
      * Display the specified resource.
      *
@@ -83,7 +95,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('post.show', compact('post'));
+        $previous_post = Post::find(($post->id) - 1);
+        $next_post = Post::find(($post->id) + 1);
+        return view('post.show', compact('post', 'previous_post', 'next_post'));
     }
 
     /**
@@ -122,17 +136,18 @@ class PostController extends Controller
 
     public function addComment(Request $request, Post $post)
     {
-        dd($request->all());
+        $this->validateComment($request);
+        $post->comments()->create([
+            'text' => $request->get('text'),
+            'user_id' => Auth::user()->id
+        ]);
+        return back();
     }
 
-    private function validateForm(Request $request)
+    private function validateComment(Request $request)
     {
         $request->validate([
-            'title' => ['required', 'string', 'max:256'],
-            'body' => ['required', 'string', 'required', 'max:65535'],
-            'thumbnail' => ['nullable', 'mimes:jpg,bmp,png,jpeg', 'max:10240'],
-            'categories' => ['nullable', 'array', Rule::in(Category::all()->modelKeys())]
+            'text' => ['required', 'string', 'max:255']
         ]);
     }
-
 }
